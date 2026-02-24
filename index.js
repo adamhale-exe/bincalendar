@@ -3,13 +3,29 @@ const express = require('express');
 const app = express();
 
 // In-memory storage for user data (replace with database in production)
+// WARNING: This is a memory leak risk - implement proper persistence for production
 const userData = {};
+
+// Optional: Add periodic cleanup or size monitoring
+const MAX_USERS = 10000; // Adjust based on your needs
+function checkMemoryUsage() {
+  const userCount = Object.keys(userData).length;
+  if (userCount > MAX_USERS) {
+    console.warn(`Memory warning: ${userCount} users in memory. Consider implementing database persistence.`);
+  }
+}
 
 // Helper function to get current week number based on start date
 function getCurrentWeekInCycle(startDate, scheduleWeeks) {
   const now = new Date();
   const start = new Date(startDate);
-  const diffTime = Math.abs(now - start);
+  
+  // If start date is in the future, return week 1
+  if (start > now) {
+    return 1;
+  }
+  
+  const diffTime = now - start;
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   const weeksPassed = Math.floor(diffDays / 7);
   return (weeksPassed % scheduleWeeks) + 1;
@@ -25,7 +41,7 @@ function getDaysUntilBinDay(binDay) {
   if (targetDay === -1) return -1;
   
   let daysUntil = targetDay - currentDay;
-  if (daysUntil <= 0) {
+  if (daysUntil < 0) {
     daysUntil += 7;
   }
   
@@ -38,6 +54,7 @@ const LaunchRequestHandler = {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
   },
   handle(handlerInput) {
+    checkMemoryUsage(); // Monitor memory usage
     const userId = handlerInput.requestEnvelope.session.user.userId;
     
     if (!userData[userId] || !userData[userId].setupComplete) {
