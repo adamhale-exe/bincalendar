@@ -1,0 +1,30 @@
+{
+  "name": "bincalendar",
+  "version": "1.0.0",
+  "description": "An Alexa Skill to keep track of which bins you should put out this week.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamhale-exe/bincalendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/adamhale-exe/bincalendar/issues"
+  },
+  "homepage": "https://github.com/adamhale-exe/bincalendar#readme",
+  "dependencies": {
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.86.0",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "axios": "^1.13.5"
+  }
+}

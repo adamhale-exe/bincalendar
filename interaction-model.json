@@ -1,0 +1,88 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "bin calendar",
+      "intents": [
+        {
+          "name": "BinDayIntent",
+          "slots": [
+            {
+              "name": "day",
+              "type": "AMAZON.DayOfWeek"
+            }
+          ],
+          "samples": [
+            "{day}",
+            "my bins are collected on {day}",
+            "bin day is {day}",
+            "collection day is {day}",
+            "they collect on {day}",
+            "the bins are collected on {day}"
+          ]
+        },
+        {
+          "name": "ScheduleWeeksIntent",
+          "slots": [
+            {
+              "name": "weeks",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "{weeks}",
+            "{weeks} weeks",
+            "my schedule is {weeks} weeks",
+            "the schedule is {weeks} weeks",
+            "it's a {weeks} week schedule",
+            "{weeks} week schedule"
+          ]
+        },
+        {
+          "name": "SetBinsIntent",
+          "slots": [
+            {
+              "name": "bins",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "{bins}",
+            "the bins are {bins}",
+            "collect {bins}",
+            "it's {bins}",
+            "{bins} bins"
+          ]
+        },
+        {
+          "name": "CheckBinsIntent",
+          "slots": [],
+          "samples": [
+            "what bins are being collected",
+            "what bins are collected this week",
+            "which bins this week",
+            "which bins are out this week",
+            "what bins should I put out",
+            "what bins do I need to put out",
+            "what bins are out",
+            "tell me which bins",
+            "check bins",
+            "what's being collected"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        }
+      ],
+      "types": []
+    }
+  }
+}
